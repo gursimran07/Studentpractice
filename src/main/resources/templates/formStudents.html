@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="col-md-6 offset-md-3">
+        <form method="post" th:action="@{/save}">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" th:value="${student.name}">
+                <span th:errors="${student.name}" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input class="form-control" type="date" id="dob" name="dob" th:value="${student.dob}">
+                <span th:errors="${student.dob}" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="passed" name="passed" th:checked="${student.passed}">
+                <label class="form-check-label" for="passed">Passed</label>
+                <span th:errors="${student.passed}" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="gpa">GPA</label>
+                <input class="form-control" type="text" id="gpa" name="gpa" th:value="${student.gpa}">
+                <span th:errors="${student.gpa}" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>
